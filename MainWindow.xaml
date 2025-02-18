@@ -9,11 +9,14 @@
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <controls:CustomMenu x:Name="menu" DockPanel.Dock="Top"/>
-        <controls:CustomToolbar DockPanel.Dock="Top"/>
+        <controls:CustomToolbar x:Name="toolbar" 
+                                DockPanel.Dock="Top" 
+                                ComboBox.SelectionChanged="CustomToolbar_SelectionChanged"/>
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock x:Name="status"/>
         </StatusBar>
         <RichTextBox x:Name="body" 
+                     SelectionChanged="body_SelectionChanged"
                      SpellCheck.IsEnabled="True"
                      AcceptsReturn="True"
                      AcceptsTab="True"

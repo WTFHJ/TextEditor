@@ -27,5 +27,28 @@ namespace TextEditor
                 status.Text = "Document Loaded";
             }
         }
+
+        private void CustomToolbar_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox source=e.OriginalSource as ComboBox;
+            if (source == null) return;
+
+            switch (source.Name)
+            {
+                case "fonts":
+                    _documentManager.ApplyToSelection(TextBlock.FontFamilyProperty, source.SelectedItem);
+                    break;
+                case "fontSize":
+                    _documentManager.ApplyToSelection(TextBlock.FontSizeProperty, source.SelectedItem);
+                    break;
+            }
+
+            body.Focus();
+        }
+
+        private void body_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            // az eszköztár frissítése
+        }
     }
 }
