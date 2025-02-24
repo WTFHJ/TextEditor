@@ -33,20 +33,20 @@ namespace TextEditor.UserControls
             }
         }
 
-        public void SynchronizeWith(TextSelection selection)
-        {
-            object size = selection.GetPropertyValue(TextBlock.FontSizeProperty);
-            if (size != DependencyProperty.UnsetValue)
-            {
-                fontSize.SelectedValue = (double)size;
-            }
+        //public void SynchronizeWith(TextSelection selection)
+        //{
+        //    object size = selection.GetPropertyValue(TextBlock.FontSizeProperty);
+        //    if (size != DependencyProperty.UnsetValue)
+        //    {
+        //        fontSize.SelectedValue = (double)size;
+        //    }
 
-            object weight = selection.GetPropertyValue(TextBlock.FontWeightProperty);
-            if (weight != DependencyProperty.UnsetValue)
-            {
-                boldBtn.IsChecked = ((FontWeight)weight== FontWeights.Bold);
-            }
-        }
+        //    object weight = selection.GetPropertyValue(TextBlock.FontWeightProperty);
+        //    if (weight != DependencyProperty.UnsetValue)
+        //    {
+        //        boldBtn.IsChecked = ((FontWeight)weight== FontWeights.Bold);
+        //    }
+        //}
 
         private void Synchronize<T>(TextSelection selection, DependencyProperty property, Action<T> methodToCall)
         {
@@ -63,10 +63,31 @@ namespace TextEditor.UserControls
             boldBtn.IsChecked=weight== FontWeights.Bold;
         }
 
+        private void setFontStyle(FontStyle style)
+        {
+            italicBtn.IsChecked = style == FontStyles.Italic;
+        }
+
+        private void setTextDecoration(TextDecorationCollection decoration)
+        {
+            underlineBtn.IsChecked = decoration == TextDecorations.Underline;
+        }
+
+        private void setFontFamily(FontFamily family)
+        {
+            fonts.SelectedItem = family;
+        }
+
+        public bool IsSynchronizing { get; private set; }
+
         public void SynchronizeWith(TextSelection selection)
         {
+            IsSynchronizing = true;
             Synchronize<double>(selection, TextBlock.FontSizeProperty, SetFontSize);
             Synchronize<FontWeight>(selection, TextBlock.FontWeightProperty, setFontWeight);
+            IsSynchronizing = false;
         }
+
+       
     }
 }

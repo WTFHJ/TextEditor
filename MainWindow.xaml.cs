@@ -30,6 +30,8 @@ namespace TextEditor
 
         private void CustomToolbar_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
+            if (toolbar.IsSynchronizing) return;
+
             ComboBox source=e.OriginalSource as ComboBox;
             if (source == null) return;
 
@@ -48,7 +50,7 @@ namespace TextEditor
 
         private void body_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            // az eszköztár frissítése
+            toolbar.SynchronizeWith(body.Selection);
         }
     }
 }
