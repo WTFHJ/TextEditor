@@ -63,11 +63,11 @@ namespace TextEditor
                 }
                 return true;
             }
-        }   
+        }  
         
         public void ApplyToSelection(DependencyProperty property, object value)
         {
-            if (value != null)
+            if (value != null) 
             {
                 _richTextBox.Selection.ApplyPropertyValue(property, value);
             }

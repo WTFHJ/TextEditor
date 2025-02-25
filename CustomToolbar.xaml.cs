@@ -85,6 +85,9 @@ namespace TextEditor.UserControls
             IsSynchronizing = true;
             Synchronize<double>(selection, TextBlock.FontSizeProperty, SetFontSize);
             Synchronize<FontWeight>(selection, TextBlock.FontWeightProperty, setFontWeight);
+            Synchronize<FontStyle>(selection, TextBlock.FontStyleProperty, setFontStyle);
+            Synchronize<TextDecorationCollection>(selection, TextBlock.TextDecorationsProperty, setTextDecoration);
+            Synchronize<FontFamily>(selection, TextBlock.FontFamilyProperty, setFontFamily);
             IsSynchronizing = false;
         }
 

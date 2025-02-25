@@ -8,10 +8,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
-        <controls:CustomMenu x:Name="menu" DockPanel.Dock="Top"/>
+        <controls:CustomMenu x:Name="menu" 
+                             DockPanel.Dock="Top"/>
         <controls:CustomToolbar x:Name="toolbar" 
-                                DockPanel.Dock="Top" 
-                                ComboBox.SelectionChanged="CustomToolbar_SelectionChanged"/>
+                            DockPanel.Dock="Top"
+                            ComboBox.SelectionChanged="CustomToolbar_SelectionChanged"/>
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock x:Name="status"/>
         </StatusBar>
